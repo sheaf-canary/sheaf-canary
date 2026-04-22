@@ -1,0 +1,108 @@
+SHEAF PROJECT WARRANT CANARY
+============================
+
+Period:          {QUARTER}
+Issued:          {ISSUED_DATE}
+Next canary due: {NEXT_DUE_DATE}
+Grace period:    14 days (expires {GRACE_EXPIRY})
+
+
+ATTESTATION
+-----------
+
+As of the date above, and in the context of the fresh entropy below,
+the undersigned individually and jointly attest, in our capacity as
+maintainers of the Sheaf Project, that:
+
+ 1. No warrants, subpoenas, National Security Letters, court orders,
+    or similar compelled-disclosure instruments have been received,
+    by us personally or on behalf of the Sheaf Project or its
+    associated legal entities, since the previous canary was issued.
+
+ 2. No gag orders, non-disclosure directives, or similar instruments
+    restricting our speech regarding the matters attested to in this
+    document are in effect against either signatory.
+
+ 3. No law enforcement agency, intelligence service, government body,
+    or other third party has requested access to user data, server
+    logs, cryptographic keys, signing materials, account information,
+    or other non-public information held by the Sheaf Project.
+
+ 4. No party has requested, suggested, or attempted to compel
+    modifications to the Sheaf codebase or infrastructure, including
+    but not limited to backdoors, deliberately weakened cryptography,
+    surveillance features, expanded logging, or functionality
+    targeting specific users or classes of users.
+
+ 5. No cryptographic keys, signing materials, TLS certificates, API
+    credentials, or other access tokens used by the Sheaf Project
+    have been disclosed to, shared with, or seized by any third party.
+
+ 6. No physical or electronic search, seizure, or unauthorised access
+    to Sheaf Project infrastructure (including production servers,
+    developer machines, backup systems, and source control) has
+    occurred or come to our attention.
+
+ 7. Neither signatory has been approached by any party, in their
+    capacity as a Sheaf maintainer, regarding any of the matters
+    above.
+
+ 8. Neither signatory signs this statement under duress. Each has
+    independently verified the entropy below against original
+    sources.
+
+
+FRESH ENTROPY
+-------------
+
+The following items could not have been known at the time any
+pre-dated signature would have been generated, and therefore
+establish that this statement was signed on or after the block
+timestamp below.
+
+  Bitcoin block height:  {BTC_HEIGHT}
+  Bitcoin block hash:    {BTC_HASH}
+  Block timestamp (UTC): {BTC_TIMESTAMP}
+
+  The Guardian, top front page headline ({ENTROPY_DATE}):
+    "{GUARDIAN_HEADLINE}"
+
+  The New York Times, top front page headline ({ENTROPY_DATE}):
+    "{NYT_HEADLINE}"
+
+
+INTERPRETATION
+--------------
+
+If this canary has not been superseded by a newly signed canary file
+in the canaries/ directory of this repository by {GRACE_EXPIRY}, and
+no public explanation has been posted to:
+
+  - The README of this repository
+  - The out-of-band channels listed in the README
+
+then readers SHOULD treat all prior statements as no longer operative
+and SHOULD assume that one or more of the conditions above may no
+longer hold. Absence of a signed renewal is the signal.
+
+Neither signatory will, under any circumstances, issue a canary
+containing a concealed duress signal, a deliberate error, or a
+steganographic tell. The only legitimate response to compulsion is
+to decline to sign. Readers should not attempt to extract hidden
+meaning from the presence, content, or formatting of any canary.
+
+
+SIGNATORIES
+-----------
+
+{SIGNATORIES_BLOCK}
+
+Detached ASCII-armoured signatures accompany this file:
+
+{SIGNATURE_FILES_BLOCK}
+
+Verify with:
+
+{VERIFY_COMMANDS_BLOCK}
+
+Or run ./scripts/verify.sh from the repository root.

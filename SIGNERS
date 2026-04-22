@@ -1,0 +1,21 @@
+# Signers for the Sheaf warrant canary.
+#
+# Format, TAB-separated:
+#     handle<TAB>name<TAB>fingerprint<TAB>email
+#
+# - handle:      short lowercase identifier used in signature filenames
+#                (e.g. handle "siterelenby" => canaries/2026-Q2.txt.siterelenby.asc)
+# - name:        display name used in the canary signatory block
+# - fingerprint: full 40-character hex fingerprint, no spaces
+# - email:       for reference only; not used for verification
+#
+# Changing this file is a repo-level action. Both signatories must
+# agree and sign the commit that changes it.
+#
+# To rotate a key: add the new key as an additional line with a
+# distinct handle (e.g. "j2"), publish at least one canary signed
+# by BOTH the old and new key, then remove the old line in a
+# subsequent canary cycle.
+
+siterelenby	SiteRelEnby	0315B7582C0B170DE1C1AC48722EB40ADED799AE	125829806+SiteRelEnby@users.noreply.github.com
+nocturnal	Nocturnal	3C125C080C7E92BF848CCD167B099825CFE42493	241546228+fullynocturnal@users.noreply.github.com
