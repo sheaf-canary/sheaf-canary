@@ -48,7 +48,7 @@ in each signed canary file itself. Both must match.
 This repository is mirrored at:
 
 - (primary) `github.com/sheaf-canary/sheaf-canary`
-- (mirror) `codeberg.org/sheaf-canary/sheaf-canary` *(configure after initial push)*
+- (mirror) `codeberg.org/sheaf-canary/sheaf-canary`
 
 If the mirrors disagree, that is itself a signal. Cross-check.
 
@@ -57,7 +57,9 @@ If the mirrors disagree, that is itself a signal. Cross-check.
 If the canary lapses, look for a public explanation at:
 
 - This repository's README (top-of-file notice)
-- *(fediverse handles to be added)*
+- https://transfem.social/@SiteRelEnby
+- https://SiteRelEnby.net
+- https://sheaf.sh
 
 Absence of both a renewal **and** an explanation is the signal.
 
