@@ -70,11 +70,26 @@ do
         continue
     fi
 
+    # VALIDSIG field 3 is the key that made the signature; the final
+    # field is that key's primary. They differ when a subkey signed.
     got=$(echo "$status" | awk '/^\[GNUPG:\] VALIDSIG/ {print $3; exit}')
+    got_primary=$(echo "$status" | awk '/^\[GNUPG:\] VALIDSIG/ {print $NF; exit}')
 
     if [[ "$got" != "$want" ]]
     then
-        printf '  [WRONGFP] %s — got %s, expected %s\n' "$handle" "$got" "$want"
+        if [[ "$got_primary" == "$want" ]]
+        then
+            # Cryptographically fine, but not the attestation we
+            # publish. The canary names one fingerprint so a reader has
+            # one value to check; accepting anything that chains up to
+            # it would mean any subkey ever added counts as a canary
+            # signature. See scripts/sign.sh.
+            printf '  [SUBKEY]  %s - signed by subkey %s\n' "$handle" "$got"
+            printf '            of expected key %s, not the key itself\n' "$want"
+            printf '            re-sign with: scripts/sign.sh <file> %s\n' "$handle"
+        else
+            printf '  [WRONGFP] %s - got %s, expected %s\n' "$handle" "$got" "$want"
+        fi
         all_sigs_ok=0
         continue
     fi

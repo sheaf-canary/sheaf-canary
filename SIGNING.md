@@ -43,6 +43,13 @@ Before the first canary:
    gpg --armor --export <your-fingerprint> > keys/<handle>.asc
    ```
 
+   Note that this exports the whole key: primary, UIDs, and every
+   subkey attached to it at the time you run it. That is fine, but it
+   means re-running the export months later can quietly add subkeys
+   that have nothing to do with the canary. Only re-export when you
+   actually intend to change what the repo publishes, and read the
+   diff before staging it.
+
 4. **Configure git to sign commits by default.** Use `--local` (not
    `--global`) so this identity stays scoped to this repo and does not
    leak into commits you make elsewhere — particularly important if
@@ -57,6 +64,25 @@ Before the first canary:
    git config --local commit.gpgsign true
    git config --local tag.gpgsign true
    ```
+
+   This governs *commits*, not canaries, and a bare fingerprint is the
+   right thing here: git is happy for a signing subkey to stand in for
+   your key, and GitHub will show the commit as verified either way.
+
+   **Canary signatures are different.** `scripts/sign.sh` pins signing
+   to the exact fingerprint in `SIGNERS` (gpg's `<fingerprint>!`
+   syntax) rather than letting gpg pick a subkey, and `verify.sh`
+   rejects anything else with `[SUBKEY]`. The reason: a canary reader
+   has one fingerprint to check, published in `SIGNERS` and inside the
+   canary text, and the attestation is only worth what the key holding
+   it is worth. If your canary key lives on a Yubikey but you have a
+   convenience subkey on disk for day-to-day commits, an unpinned
+   `gpg --detach-sign` will reach for the on-disk subkey every time.
+   Same person, weaker claim, and nothing in the output says so.
+
+   So: use the on-disk subkey for commits, and the real key for the
+   canary. You will need the token plugged in on signing day. That is
+   the point.
 
 5. **On GitHub, set branch protection on `main`**:
 
